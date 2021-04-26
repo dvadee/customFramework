@@ -1,0 +1,15 @@
+﻿$parent: grid;
+
+@include block($parent) {
+  @include element-modifier($parent, null, 'products') {
+    @include element($parent, 'row') {
+      @include element-modifier($parent, 'row', 'has-purchased-quantity') {
+        background-color: $color-success-300;
+      }
+
+      @include element-modifier($parent, 'row', 'has-offers') {
+        background-color: rgba(112, 255, 123, 0.28);
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+﻿$cell: grid-product-quantity-cell;
+$grid: grid;
+
+@include block($grid) {
+  @include block($cell) {
+    max-height: none;
+
+    @include element($cell, 'content') {
+      display: none;
+    }
+
+    @include element($cell, 'content-item') {
+      box-shadow: inset 0px -1px 0 $table-border-color, 0px -1px $table-border-color;
+
+      &:first-child {
+        box-shadow: none;
+      }
+
+      &:last-child {
+        box-shadow: none;
+      }
+    }
+
+    @include element($cell, 'simple-content') {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  @include modifier($grid, 'product-quantity-cell-multi-row-enabled') {
+    @include element($grid, 'cell') {
+      max-height: none;
+    }
+    
+    @include block($cell) {
+      @include element($cell, 'content') {
+        display: flex;
+      }
+
+      @include element($cell, 'simple-content') {
+        display: none;
+      }
+    }
+  }
+}
+

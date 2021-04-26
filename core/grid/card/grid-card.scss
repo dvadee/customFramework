@@ -1,0 +1,29 @@
+﻿$block: grid-card;
+$grid: grid;
+
+@include block($block) {
+  @include block($grid) {
+    @include element($grid, 'table') {
+      border-left-color: transparent!important;
+      border-right-color: transparent!important;
+    }
+    
+    .table {
+      thead,
+      tbody,
+      tfoot {
+        tr {
+          th, td {
+            &:first-child {
+              border-left: none;
+            }
+
+            &:last-child {
+              border-right: none;
+            }
+          }
+        }
+      }
+    } 
+  }
+}

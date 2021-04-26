@@ -1,0 +1,29 @@
+﻿@import './collapse-btn/layout-column-collapse-btn';
+
+$parent: layout-column;
+$card: card;
+
+@include block($parent) {
+  position: relative;
+
+  @include modifier($parent, 'flexible') {
+    @include media-breakpoint-up(xl) {
+      flex-grow: 1;
+      flex-shrink: 0;
+      max-width: none;
+      width: 0;
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include modifier($parent, 'collapsed') {
+      max-width: 50px;
+
+      @include block($card) {
+        & > * {
+          display: none;
+        }
+      }
+    }
+  }
+}

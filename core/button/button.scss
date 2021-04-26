@@ -1,0 +1,13 @@
+$parent: erp-btn;
+
+@include block($parent) {
+  text-overflow: ellipsis;
+
+  @include element-modifier($parent, null, 'with-text') {
+    @include element-modifier($parent, null, 'with-icon') {
+      @include element($parent, 'icon-el') {
+        margin-right: 0.625rem;
+      }
+    }
+  }
+}

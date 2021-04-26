@@ -1,0 +1,27 @@
+﻿
+mixin dropdown(config)
+    - 
+        var btnCls = config.btnCls || 'btn btn-primary btn-block',
+            reference = config.reference || '',
+            btnIcon = config.btnIcon || '',
+            btnText = config.btnText || '',
+            items = config.items;
+        
+        if (config.btnBlock) {
+          btnCls += 'btn-block';
+        }
+        
+    .dropdown(data-ref= reference)&attributes(attributes)
+        if config.label
+            .font-weight-bold= config.label ? config.label + ':' : ''  
+        button.dropdown-toggle(data-toggle='dropdown' class= btnCls ? 'btn ' + btnCls : '')
+            if btnIcon
+                i(class= btnIcon + (btnText && ' mr-2'))
+            if btnText
+                | #{btnText}
+        .dropdown-menu
+            if config.items
+                each item in items
+                    .dropdown-item(data-value=item.value class= (item.disabled ? 'disabled' : ''))= item.text
+            if block
+                block

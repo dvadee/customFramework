@@ -1,0 +1,21 @@
+﻿$parent: component;
+
+@include block($parent) {
+  @include modifier($parent, 'disabled') {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.65!important;
+    
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      //background-color: #fff;
+      //opacity: 0.35;
+      z-index: 10;
+    }
+  }
+}

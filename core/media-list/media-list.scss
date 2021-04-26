@@ -1,0 +1,8 @@
+﻿$parent: media-list;
+
+@include block($parent) {
+  @include element($parent, 'image') {
+    width: 42px;
+    height: 42px;
+  }
+}

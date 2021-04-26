@@ -1,0 +1,29 @@
+﻿$parent: media-photo-slider;
+$slide: media-photo-slider-slide;
+$thumb-slide: media-photo-slider-thumb-slide;
+
+@include block($parent) {
+  .swiper-wrapper {
+    align-items: center;
+  }
+}
+
+@include block($slide) {
+
+}
+
+@include block($thumb-slide) {
+  position: relative;
+  text-align: center;
+  
+  @include element($thumb-slide, 'image-ct') {
+    height: 100px;
+  }
+
+  @include element($thumb-slide, 'image') {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+  }
+}

@@ -1,0 +1,7 @@
+﻿$parent: import-headers-table;
+
+@include block($parent) {
+  @include element($parent, 'th-inner') {
+    width: 300px;
+  }
+}

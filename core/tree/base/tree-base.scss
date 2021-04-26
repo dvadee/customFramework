@@ -1,0 +1,108 @@
+$parent: tree;
+$node-title: fancytree-title;
+
+@mixin pending-title() {
+  @include block($node-title) {
+    background-color: #eee!important;
+    color: $color-grey-300!important;
+  }
+}
+
+@mixin selected-title() {
+  @include block($node-title) {
+    background-color: #eee!important;
+    color: $color-grey-900!important;
+  }
+}
+
+@mixin active-title() {
+  @include block($node-title) {
+    color: $white!important;
+    background-color: $color-primary-500!important;
+  }
+  
+  .badge-flat {
+    background-color: #fff!important;
+  }
+}
+
+@include block($parent) {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include element($parent, 'header') {
+    flex-shrink: 0;
+  }
+
+  @include element($parent, 'body') {
+    flex: 1 1 auto;
+    overflow: auto;
+    min-height: 1px;
+    height: 1px;
+    
+    .fancytree-container {
+      height: 100%;
+    }
+  }
+  
+  .fancytree-drag-helper {
+    background-color: $white;
+  }
+
+  #fancytree-drop-marker {
+    &.fancytree-drop-before,
+    &.fancytree-drop-after {
+      height: 2px;
+      border: none;
+      background-color: $color-primary-300;
+    }
+  }
+  
+  
+  .fancytree-node {
+    &.fancytree-pending {
+      pointer-events: none!important;
+      
+      @include pending-title();
+      
+      &.fancytree-selected,
+      &.fancytree-active,
+      &.fancytree-active.fancytree-selected {
+        @include pending-title();
+      }
+      
+      .fancytree-icon {
+        @include spinner();
+        
+        &::after {
+          content: '\EB51';
+        }
+      }
+    }
+    
+    &.fancytree-hide {
+      display: none;
+    }
+   
+    &.fancytree-selected {
+      @include selected-title();
+    }
+
+    &.fancytree-active,
+    &.fancytree-active.fancytree-selected {
+      @include active-title();
+    }
+    
+    .fancytree-title {
+      transition: none!important;
+      
+      .fancytree-edit-input {
+        border-radius: 0.25rem;
+        background-color: #fff;
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
+    }
+  }
+}

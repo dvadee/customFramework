@@ -1,0 +1,21 @@
+﻿$select2: select2;
+$selection: select2-selection;
+$container: select2-container;
+
+@include block($select2) {
+  display: block;
+}
+
+@include block($selection) {
+  height: 36px;
+  
+  @include element-modifier($selection, null, 'multiple') {
+    height: auto;
+  }
+}
+
+//@include block($container) {
+//  @include element-modifier($container, null, 'open') {
+//    z-index: 1000;
+//  }
+//}

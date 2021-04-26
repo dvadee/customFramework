@@ -1,0 +1,8 @@
+﻿.dataTable {
+  tr {
+    &.loading {
+      opacity: 0.65!important;
+      pointer-events: none!important;
+    }
+  }
+}

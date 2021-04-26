@@ -1,0 +1,25 @@
+$parent: dropdown;
+
+@include block($parent) {
+  @include b-element($parent, 'toggle') {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      line-height: 1.3;
+    }
+
+    .btn-text {
+      flex-grow: 1;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    &::after {
+      display: block;
+      flex-shrink: 0;
+    }
+  }
+}

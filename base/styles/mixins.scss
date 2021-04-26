@@ -1,0 +1,9 @@
+﻿@mixin card-header-tool-fz($fz) {
+  & > .card-header {
+    .card-header-tool {
+      &__icon {
+        font-size: $fz;
+      }
+    }
+  }
+}

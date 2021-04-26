@@ -1,0 +1,347 @@
+@import './settings/btn/grid-settings-btn.scss';
+@import './column/check/header/grid-column-check-header';
+@import './column/check/grid-column-check';
+@import './column/product/quantity/grid-column-product-quantity';
+@import './column/actions/grid-columns-actions';
+@import './filter/grid-filter';
+@import './search/widget/grid-search-widget';
+
+$parent: grid;
+$settings-ct-height: 0;
+
+@include block($parent) {
+  .dataTables {
+    &_info {
+      margin-bottom: 0;
+    }
+
+    &_wrapper {
+      height: 100%;
+    }
+
+    &_scroll {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &_scrollHead {
+      flex-shrink: 0;
+      background-color: #fff;
+
+      @include element($parent, 'table') {
+        border-top: 1px solid $table-border-color;
+        border-bottom: 1px solid $table-border-color;
+      }
+      
+      @include element($parent, 'td') {
+        border-top: 0;
+        border-bottom: 0;
+      }
+    }
+
+    &_scrollHeadInner {
+      // padding-right: 17px !important;
+    }
+
+    &_scrollBody {
+      flex-grow: 1;
+    }
+
+    &_length {
+      margin-bottom: 0;
+      margin-left: 0;
+    }
+
+    &_paginate {
+      margin-bottom: 0;
+      margin-left: 0;
+    }
+    
+    &_filter {
+      margin: 0;
+      float: none;
+      
+      & > label {
+        width: 100%;
+      }
+    }
+  }
+
+  .dts_label {
+    display: none;
+  }
+
+  @include element($parent, 'toolbar') {
+    flex-shrink: 0;
+  }
+
+  @include element($parent, 'header') {}
+
+  @include element($parent, 'body-wrapper') {
+    position: relative;
+    z-index: 10;
+  }
+  
+  @include element($parent, 'row') {
+    transition: none!important;
+
+
+    @include element-modifier($parent, 'row', 'selected') {
+      background-color: $grid-selected-bg!important;
+      color: $body-color!important;
+
+      .select-checkbox {
+        &::after {
+          content: "\E600";
+          font-family: "icomoon";
+          position: absolute;
+          width: 1.25rem;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          margin: auto;
+          cursor: pointer;
+          font-size: 1rem;
+          line-height: 1;
+          height: 1rem;
+          text-align: center;
+        }
+      }
+    }
+
+    @include element-modifier($parent, 'row', 'selected') {
+      background-color: $grid-selected-bg!important;
+    }
+  }
+
+  @include element($parent, 'table') {
+    &.table-hover {
+      tbody {
+        tr {
+          &:hover {
+            color: #000!important;
+          }
+        }
+      }
+    }
+    
+    tfoot {
+      th {
+        font-weight: 400;
+        border-top-color: $table-border-color;
+      }
+    }
+    // thead {
+    //   th {
+    //     position: sticky;
+    //     top: 0;
+    //     background-color: $white;
+    //     box-shadow: inset 0px -1px 0 $table-border-color, -1px 0 $table-border-color;
+    //     z-index: 10;
+    //   }
+    // }
+    tbody {
+      tr {
+        &.selected {
+          color: #000 !important;
+        }
+      }
+    }
+  }
+
+  thead {
+    @include element($parent, 'td') {
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: pre-wrap;
+    }
+  }
+
+  tbody,
+  tfoot {
+    @include element($parent, 'td') {
+      padding: 3px 7px;
+      
+      @include element-modifier($parent, 'td', 'edit') {
+        @include element($parent, 'cell') {
+          opacity: 0;
+          pointer-events: none;
+          z-index: 0;
+        }
+
+        @include element($parent, 'cell-editor') {
+          display: block;
+          box-shadow: $box-shadow;
+          z-index: 10;
+          
+          &.input-group {
+            display: flex!important;
+          }
+        }
+      }
+    }
+  }
+
+  @include element($parent, 'cell-editor') {
+    display: none;
+    position: absolute;
+    top: 3px;
+    left: 7px;
+    width: calc(100% - 14px);
+  }
+
+  @include element($parent, 'td') {
+    position: relative;
+    overflow: hidden;
+  }
+
+  @include element($parent, 'cell') {
+    max-height: 3.6rem;
+    overflow: hidden;
+  }
+
+  @include element($parent, 'th') {
+    @include element($parent, 'cell') {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      position: relative;
+
+      &:after,
+      &:before {
+        content: '';
+        font-family: "icomoon";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        font-size: 0.75rem;
+        margin-top: -0.375rem;
+        display: none;
+        line-height: 1;
+        opacity: 0.5;
+      }
+
+      &:after {
+        content: '\E9C2';
+      }
+
+      &:before {
+        content: '\E9C1';
+      }
+    }
+
+    cursor: default;
+    padding-right: 0.75rem !important;
+    padding-left: 0.5rem !important;
+    
+    &.sorting_disabled {
+      padding-right: 0.5rem !important;
+    }
+    
+    &::after,
+    &::before {
+      display: none !important;
+    }
+
+    &.sorting {
+      @include element($parent, 'cell') {
+        padding-right: 0.75rem;
+
+        &::after,
+        &::before {
+          display: inline-block;
+        }
+
+        &:after {
+          margin-top: -0.625rem;
+        }
+
+        &::before {
+          margin-top: -0.125rem;
+        }
+      }
+    }
+
+    &.sorting_asc {
+      @include element($parent, 'cell') {
+        padding-right: 0.75rem;
+
+        &:after {
+          display: inline-block;
+          opacity: 1;
+        }
+      }
+    }
+
+    &.sorting_desc {
+      @include element($parent, 'cell') {
+        padding-right: 0.75rem;
+
+        &:before {
+          display: inline-block;
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  @include element($parent, 'cell-inner') {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  @include element($parent, 'settings-ct') {
+    height: $settings-ct-height;
+  }
+  
+  @include element($parent, 'cell-image-ct') {
+    width: 60px;
+    height: 60px;
+  }
+  
+  @include element($parent, 'cell-image') {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  @include element($parent, 'filter') {
+    
+  }
+
+  @include modifier($parent, 'paging-disabled') {
+    @include element($parent, 'paging') {
+      display: none;
+    }
+  }
+
+  @include modifier($parent, 'settings-disabled') {
+    @include element($parent, 'settings-ct') {
+      display: none;
+    }
+  }
+
+  @include modifier($parent, 'header-hidden') {
+    @include element($parent, 'header') {
+      display: none !important;
+    }
+  }
+  
+  @include modifier($parent, 'hover') {
+    @include element($parent, 'row') {
+      &:hover {
+        background-color: $grid-selected-bg!important;
+        color: #000!important;
+      }
+    }
+  }
+  
+  @include modifier($parent, 'read-only') {
+    
+  }
+}

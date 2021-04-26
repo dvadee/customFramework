@@ -1,0 +1,44 @@
+@import './header/tool/card-header-tool';
+
+$parent: card;
+$card-heights-count: 10;
+$card-heights-step: 50;
+
+@include block($parent) {
+  @for $i from 1 through $card-heights-step {
+    $height: $i * $card-heights-step;
+
+    @include b-modifier($parent, 'h-'+ $height) {
+      @include b-element($parent, 'body') {
+        height: $height + px;
+        overflow: hidden;
+      }
+    }
+  }
+  
+  @include b-element($parent, 'header') {
+    // min-height: rem(46);
+  }
+
+  @include b-element($parent, 'title') {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  @include b-element($parent, 'content') {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include b-element($parent, 'content-header') {
+    flex-shrink: 0;
+  }
+
+  @include b-element($parent, 'content-body') {
+    flex: 1 1 auto;
+    min-height: 1px;
+    height: 1px;
+  }
+}

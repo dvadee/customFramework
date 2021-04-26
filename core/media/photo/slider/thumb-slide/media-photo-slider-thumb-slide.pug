@@ -1,0 +1,14 @@
+﻿.swiper-slide.media-photo-slider__thumb-slide.media-photo-slider-thumb-slide(data-id= photoId data-order= displayOrder)
+    .card.mb-0
+        .card-header.px-2.py-1.d-flex.align-items-center
+            .ml-auto.header-elements.pt-0
+                .list-icons
+                    if photoReorderEnabled
+                        a.list-icons-item(href='#' title='Изменить порядок' data-action='onShiftUpOrderActionBtnClick')
+                            i.icon-arrow-left12
+                        a.list-icons-item(href='#' title='Изменить порядок' data-action='onShiftDownOrderActionBtnClick')
+                            i.icon-arrow-right13
+                    a.list-icons-item.text-danger(href='#' title='Удалить фото' data-action='onRemoveRowActionBtnClick')
+                        i.icon-cross
+        .media-photo-slider-thumb-slide__image-ct
+            img.media-photo-slider-thumb-slide__image(src= previewLink)

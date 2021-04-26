@@ -1,0 +1,54 @@
+﻿include ./checkbox
+
+//- bool inline 
+//- bool inputColFill
+//- string inlineLabelCls
+//- string inlineInputCls
+//- string groupRef
+//- string label
+//- string labelRef
+//- string inputRef
+mixin form-group(config)
+    -
+        if (config.inputColFill) {
+            config.inline = true;
+            config.inlineLabelCls = 'col-12 col-xl-auto';
+            config.inlineInputCls = 'col-12 col-xl-auto flex-fill';
+        }
+        
+        var cls = config.inline ? 'row' : '';
+        var labelColCls = config.inline ? (config.inlineLabelCls || 'col-12 col-xl-4 ') + ' col-form-label text-nowrap text-truncate' : '';
+        var inputColCls = config.inline ? (config.inlineInputCls  || 'col-12 col-xl-8') : '';
+        
+    .form-group(class= cls data-ref= config.groupRef)&attributes(attributes)
+        if config.label !== false
+            label(data-ref= config.labelRef class= labelColCls + ' form-group-label' title= config.label)= config.label
+        div(class= inputColCls)
+            if block
+                block
+            else
+                input(data-ref= config.inputRef class= config.inputCls || '')
+                
+mixin select-form-group(config)
+    +form-group(config)&attributes(attributes)
+        select(data-ref=config.inputRef class= config.inputCls || '')
+        
+mixin checkbox-form-group(config)
+    - config.label = false;
+    +form-group(config)&attributes(attributes)
+        +checkbox-styled(config)
+
+mixin daterange-form-group(config)
+    +form-group(config)&attributes(attributes)
+        .input-group
+            .input-group-prepend
+                .input-group-text
+                    i.icon-calendar
+            input(data-ref=config.inputRef class= config.inputCls || '')
+
+mixin currency-form-group(config)
+    +form-group(config)&attributes(attributes)
+        .input-group
+            input(data-ref=config.inputRef class= config.inputCls || '')
+            .input-group-append
+                .input-group-text &#8381;

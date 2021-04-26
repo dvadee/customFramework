@@ -1,0 +1,15 @@
+﻿.swiper-slider
+    .swiper-container.swiper-main(data-ref='slider')
+        .swiper-wrapper
+        if owner.paginationEnabled
+            .swiper-pagination(data-ref='pagination')
+        if owner.navigationEnabled
+            .swiper-button.swiper-button-prev(data-ref='btn-nav-prev')
+            .swiper-button.swiper-button-next(data-ref='btn-nav-next')
+        if owner.scrollbarEnabled
+            .swiper-scrollbar(data-ref='scrollbar')
+    if owner.thumbsEnabled
+        .swiper-container.gallery-thumbs.mt-4(data-ref='thumbs-slider')
+            .swiper-wrapper
+            .swiper-button-prev(data-ref='thumbs-btn-nav-prev')
+            .swiper-button-next(data-ref='thumbs-btn-nav-next')

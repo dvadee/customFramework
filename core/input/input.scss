@@ -1,0 +1,11 @@
+﻿$block: form-control;
+
+@include block($block) {
+  @include modifier($block, 'dirty') {
+    background-color: fade-out(#ffeb3b, 0.8);
+  }
+  
+  @include modifier($block, 'select') {
+    
+  }
+}

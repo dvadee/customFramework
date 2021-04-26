@@ -1,0 +1,7 @@
+﻿$parent: grid-search-widget;
+
+@include block($parent) {
+  width: auto;
+  max-width: 300px;
+  margin-left: auto;
+}

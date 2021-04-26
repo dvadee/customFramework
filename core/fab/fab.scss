@@ -1,0 +1,17 @@
+$parent: fab-menu;
+
+body {
+  &.notification-btn-visible {
+    @include block($parent) {
+      @include b-element-modifier($parent, null, 'bottom-right') {
+        right: 5.25rem;
+      }
+    }
+  }
+}
+
+@include block($parent) {
+  @include b-modifier($parent, 'bottom-right') {
+    // bottom: 4rem;
+  }
+}

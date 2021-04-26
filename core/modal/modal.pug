@@ -1,0 +1,8 @@
+﻿.modal(class= cls tabindex="-1" aria-hidden="true")
+    .modal-dialog(class= sizeCls + (centered && ' modal-dialog-centered') data-ref="dialog")
+        .modal-content(data-ref="content")
+            .modal-header
+                h5.modal-title(data-ref='title')= title
+                button(type="button" data-ref="close-btn" data-dismiss="modal").close &times;
+            .modal-body(data-ref="body") !{bodyRenderTpl}
+            .modal-footer(data-ref="footer") !{footerRenderTpl}

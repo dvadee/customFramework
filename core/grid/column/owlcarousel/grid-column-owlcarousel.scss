@@ -1,0 +1,7 @@
+﻿$parent: grid-column-owl-carousel;
+
+@include block($parent) {
+  width: 60px!important;
+  margin-left: auto;
+  margin-right: auto;
+}

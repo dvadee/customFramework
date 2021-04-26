@@ -1,0 +1,18 @@
+﻿mixin card(config)
+    - config = config || {};
+    - var bodyCls = config.bodyCls || '';
+        
+    .card&attributes(attributes)
+        .card-body(data-ref='body-el' class= bodyCls)
+            block
+                
+mixin card-header(config)
+    -
+      var title = config.title || '';
+      var addToolsList = config.addToolsList || false;
+        
+    .card-header.header-elements-inline&attributes(attributes)
+        h5.card-title.mb-0(data-ref='title' title= title)= title
+        .header-elements(data-ref='header-elements-ct')
+            div(data-ref='tools-list-el')
+            block

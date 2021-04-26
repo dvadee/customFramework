@@ -1,0 +1,15 @@
+﻿$grid-column-actions: grid-column-actions;
+
+$grid: grid;
+
+@include block($grid) {
+  @include block($grid-column-actions) {
+    @include element($grid, 'td') {
+      overflow: visible;
+    }
+
+    @include element($grid, 'cell') {
+      overflow: visible;
+    }
+  }
+}

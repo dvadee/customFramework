@@ -1,0 +1,17 @@
+﻿$parent: grid-filter;
+
+@include block($parent) {
+  @include element($parent, 'wrapper') {
+    position: relative;
+  }
+  
+  @include element($parent, 'clear-btn') {
+    position: absolute;
+    width: 18px;
+    height: 21px;
+    top: 0;
+    bottom: 0;
+    right: 4px;
+    margin: auto;
+  }
+}

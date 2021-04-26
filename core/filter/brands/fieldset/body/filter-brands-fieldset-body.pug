@@ -1,0 +1,17 @@
+﻿include ../../../../../base/pug/mixins/button
+
+div
+    .form-group
+        .input-group
+            .input-group-prepend
+                span.input-group-text
+                    i.icon-search4
+            input(data-ref='select-filter-input')
+    .form-group.flex-fill
+        select(data-ref='brands-select' multiple size='10')
+    .form-group.mb-0
+        +button({
+            reference: 'reset-btn',
+            cls: 'btn-primary',
+            block: true
+        })

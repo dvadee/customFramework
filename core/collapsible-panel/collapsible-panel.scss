@@ -1,0 +1,63 @@
+$parent: collapsible-panel;
+
+@include block($parent) {
+  position: relative;
+
+  @include element($parent, 'btn') {
+    display: none;
+  }
+
+  @include media-breakpoint-up(xl) {
+    @include element($parent, 'body') {
+      height: 100%;
+    }
+    
+    @include element($parent, 'btn') {
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+      z-index: 100;
+      padding: 0 !important;
+  
+      @include modifier($parent, 'right') {
+        right: 13px;
+      }
+  
+      @include modifier($parent, 'left') {
+        left: 13px;
+      }
+    }
+  
+    @include modifier($parent, 'expandable') {
+      @include element($parent, 'btn') {
+        display: none;
+      }
+  
+      @include media-breakpoint-up(xl) {
+        width: 0;
+        flex-grow: 1;
+        flex-shrink: 1;
+      }
+    }
+  
+    @include modifier($parent, 'collapsed') {
+      max-width: 50px;
+
+      @include element($parent, 'body') {
+        display: none;
+      }
+      
+      @include element($parent, 'btn') {
+        transform: rotate(180deg);
+        left: 0;
+        right: 0;
+        height: 100%;
+      }
+    }
+  }
+}

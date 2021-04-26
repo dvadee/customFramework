@@ -1,0 +1,5 @@
+﻿mixin checkbox-styled(config)
+    .form-check.form-check-inline
+        label.form-check-label.mr-2
+            input(type='checkbox' data-ref= config.inputRef).form-check-input-styled
+            span.ml-1(data-ref='label')= config.boxLabel

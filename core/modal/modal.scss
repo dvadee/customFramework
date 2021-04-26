@@ -1,0 +1,29 @@
+﻿$b-parent: modal;
+
+@include block($b-parent) {
+  @include b-element($b-parent, 'full') {
+    align-items: stretch;
+  }
+  
+  @include b-element($b-parent, 'dialog') {
+    @include b-element-modifier($b-parent, 'dialog', 'full-height') {
+      align-items: stretch;
+      max-height: calc(100% - 3.5rem);
+      
+      @include b-element($b-parent, 'content') {
+        max-height: calc(100vh - 3.5rem);
+        overflow: hidden;
+      }
+      
+      @include b-element($b-parent, 'body') {
+        overflow-y: auto;
+      }
+    }
+  }
+  
+  @include b-element($b-parent, 'footer') {
+    &:empty {
+      padding: 0;
+    }
+  }
+}

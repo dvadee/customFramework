@@ -1,0 +1,15 @@
+﻿$parent: settings-user-form;
+
+@include block($parent) {
+  @include element($parent, 'avatar-ct') {
+    width: 120px;
+    height: 120px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include  element($parent, 'avatar') {
+    width: 100%;
+    height: 100%;
+  }
+}

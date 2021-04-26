@@ -1,0 +1,14 @@
+﻿$helper: jquery-ui-draggable-helper;
+
+@include block($helper) {
+  padding: 0.5rem 1rem;
+  background-color: $white;
+  border: 1px solid $color-grey-400;
+  border-radius: 0.25rem;
+  max-width: 200px;
+  min-width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  z-index: 1000;
+}

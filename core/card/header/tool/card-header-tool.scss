@@ -1,0 +1,11 @@
+﻿$parent: card-header-tool;
+
+@include block($parent) {
+  @include element-modifier($parent, null, 'with-text') {
+    @include element-modifier($parent, null, 'with-icon') {
+      @include element($parent, 'icon') {
+        margin-right: 0.625rem;
+      }
+    }
+  }
+}

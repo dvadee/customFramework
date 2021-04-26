@@ -1,0 +1,195 @@
+@function rem($size) {
+  $remsize: $size / 16;
+
+  @return #{$remsize}rem;
+}
+
+@mixin responsive-hover() {
+  @include max-media(lg) {
+    cursor: default;
+
+    &:active {
+      @content;
+    }
+  }
+
+  @include min-media(lg) {
+    cursor: pointer;
+
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin bg-image($url, $size: cover, $position: center, $repeat: no-repeat) {
+  background-image: url($url);
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $position;
+}
+
+@mixin font-size($size, $line-height) {
+  @if $size {
+    font-size: rem($size);
+  }
+
+  @if ($line-height) {
+    line-height: rem($line-height);
+  }
+}
+
+@mixin block ($parent) {
+  .#{$parent} {
+    @content;
+  }
+}
+
+@mixin element ($parent, $name) {
+  .#{$parent}__#{$name} {
+    @content;
+  }
+}
+
+@mixin b-element ($parent, $name) {
+  .#{$parent}-#{$name} {
+    @content;
+  }
+}
+
+@mixin element-next ($parent, $name) {
+  +.#{$parent}__#{$name} {
+    @content;
+  }
+}
+
+@mixin element-inside($parent, $name) {
+  > .#{$parent}__#{$name} {
+    @content;
+  }
+}
+
+@mixin element-modifier($parent, $name, $modifier) {
+  $query: '#{$parent}';
+
+  @if ($name) {
+    $query: '#{$parent}__#{$name}';
+  }
+
+  &.#{$query}--#{$modifier} {
+    @content;
+  }
+}
+
+@mixin b-element-modifier($parent, $name, $modifier) {
+  $query: '#{$parent}';
+
+  @if ($name) {
+    $query: '#{$parent}-#{$name}';
+  }
+
+  &.#{$query}-#{$modifier} {
+    @content;
+  }
+}
+
+@mixin modifier($parent, $name) {
+  $length_check: str-length('#{$parent}')+1;
+
+  @if ($length_check==str-length('#{&}')) {
+    $subQuery: $parent;
+
+    @at-root &.#{$subQuery}--#{$name} {
+      @content;
+    }
+  }
+
+  @else {
+    $length: str-length('.#{$parent} ');
+    $subQuery: str-slice('#{&}', $length + 1);
+    $query: '#{&}#{$subQuery}--#{$name}';
+
+    @at-root #{$query} {
+      @content;
+    }
+  }
+}
+
+@mixin b-modifier($parent, $name) {
+  $length_check: str-length('#{$parent}')+1;
+
+  @if ($length_check==str-length('#{&}')) {
+    $subQuery: $parent;
+
+    @at-root &.#{$subQuery}-#{$name} {
+      @content;
+    }
+  }
+
+  @else {
+    $length: str-length('.#{$parent} ');
+    $subQuery: str-slice('#{&}', $length + 1);
+    $query: '#{&}#{$subQuery}-#{$name}';
+
+    @at-root #{$query} {
+      @content;
+    }
+  }
+}
+
+@mixin transition($duration: 0.2s, $timing: linear) {
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+}
+
+@mixin scrollable($height: 200px) {
+  &-scrollable {
+    max-height: $height;
+    overflow-y: auto;
+  }
+}
+
+@mixin checkbox-checked() {
+  &::after {
+    content: "\E600";
+    font-family: "icomoon";
+    font-size: 1rem;
+    line-height: 1;
+    height: 1rem;
+    text-align: center;
+  }
+}
+
+@mixin checkbox() {
+  position: relative;
+  min-width: 30px;
+  height: 30px;
+
+  &::after,
+  &::before {
+    display: inline-block;
+    color: #455A64;
+    position: absolute;
+    width: 1.25rem;
+    height: 1.25rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+  }
+
+  &::before {
+    content: '';
+    background-color: #fff;
+    border: 0.125rem solid #455A64;
+    border-radius: 0.125rem;
+  }
+}
+
+@mixin spinner() {
+  display: inline-block;
+  animation: rotation 1s linear infinite;
+}
+

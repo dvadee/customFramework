@@ -1,0 +1,7 @@
+﻿$video-slide: media-video-slider-slide;
+
+@include block($video-slide) {
+  @include element($video-slide, 'video') {
+    
+  }
+}

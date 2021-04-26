@@ -1,0 +1,28 @@
+﻿$parent: grid-column-check-header;
+$check: grid-column-check-header__checkbox;
+
+@include block($parent) {
+  @include element($parent, 'checkbox') {
+    @include checkbox();
+  }
+  
+  @include element($parent, 'text') {
+    margin-left: 1rem;
+  }
+  
+  @include element-modifier($parent, null, 'checkbox-hidden') {
+    @include element($parent, 'checkbox') {
+      display: none;
+    }
+
+    @include element($parent, 'text') {
+      margin-left: 0;
+    }
+  }
+  
+  @include element-modifier($parent, null, 'checked') {
+    @include element($parent, 'checkbox') {
+      @include checkbox-checked();
+    }
+  }
+}

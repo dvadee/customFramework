@@ -1,0 +1,42 @@
+﻿$parent: layout-column-collapse-btn;
+
+@include block($parent) {
+  display: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  transform: translateY(-50%);
+  z-index: 100;
+  padding: 0 !important;
+
+  @include media-breakpoint-up(xl) {
+    display: block;
+  }
+
+  @include modifier($parent, 'left') {
+    right: 13px;
+  }
+
+  @include modifier($parent, 'right') {
+    left: 13px;
+  }
+
+  @include modifier($parent, 'collapsed') {
+    left: 0;
+    right: 0;
+    height: 100%;
+    transform: none;
+    
+    @include element($parent, 'icon-el') {
+      transform: rotate(180deg);
+      transform-origin: center;
+    }
+  }
+  
+  @include element($parent, 'icon-el') {
+    
+  }
+}

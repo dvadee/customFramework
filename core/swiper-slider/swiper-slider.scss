@@ -1,0 +1,34 @@
+﻿@import '~swiper/swiper';
+@import '~swiper/swiper-vars';
+@import '~swiper/components/navigation/navigation';
+@import '~swiper/components/pagination/pagination';
+@import '~swiper/components/scrollbar/scrollbar';
+@import '~swiper/components/thumbs/thumbs';
+
+:root {
+  --swiper-navigation-size: 32px;
+}
+$swiper: swiper;
+
+@include block($swiper) {
+  @include b-element($swiper, 'main') {
+    @include b-element($swiper, 'button') {
+      height: 100%;
+      width: 72px;
+      top: 0;
+      background-color: fade-out(#000, 0.75);
+      
+      @include b-element-modifier($swiper, 'button', 'prev') {
+        left: 0;  
+      }
+      
+      @include b-element-modifier($swiper, 'button', 'next') {
+        right: 0;
+      }
+      
+      @include b-element-modifier($swiper, 'button', 'disabled') {
+        pointer-events: all;
+      }
+    }
+  }
+}

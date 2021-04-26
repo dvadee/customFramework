@@ -1,0 +1,9 @@
+﻿$parent: grid-column-check-cell;
+
+@include block($parent) {
+  @include checkbox();
+  
+  @include element-modifier($parent, null, 'checked') {
+    @include checkbox-checked();
+  }
+}

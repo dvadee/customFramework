@@ -1,0 +1,16 @@
+@keyframes rotation {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
+$grid-selected-bg: #eaf5ea;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1023px,
+  xl: 1600px,
+  ul: 1919px,
+  uxl: 3839px,
+);

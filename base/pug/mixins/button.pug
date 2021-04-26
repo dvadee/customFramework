@@ -1,0 +1,15 @@
+﻿mixin button(config)
+    -
+        var cls = '';
+        cls += config.text ? ' erp-btn--with-text' : '';
+        cls += config.icon ? ' erp-btn--with-icon' : '';
+        cls += config.cls ? ' ' + config.cls : '';
+        cls += config.block ? ' btn-block' : '';
+        
+        if (config.variant) {
+            cls += ' btn-' + config.variant;
+        }
+        
+    button.btn(class= cls data-ref= config.reference title= config.tooltip || '')&attributes(attributes)
+        i(data-ref='icon-el' class= config.icon || '')
+        span.btn-text(data-ref='text-el')= config.text || ''
